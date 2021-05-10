@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.mikhirurg.intellijnews.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.mikhirurg.intellijnews.MyBundle
 
 class MyApplicationService {
 
