@@ -1,13 +1,19 @@
 package io.github.intellijnews.logic;
 
-import java.time.LocalDateTime;
+import lombok.Builder;
+import lombok.Getter;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Builder
+@Getter
 public class RSSItem {
-    private String title;
-    private String link;
-    private String description;
-    private String author;
-    private String[] category;
-    private String comments;
-    private LocalDateTime pubDate;
+    private final String title;
+    private final String link;
+    private final String description;
+    private final String author;
+    private final List<String> category;
+    private final String comments;
+    private final LocalDateTime pubDate;
 }
