@@ -1,10 +1,15 @@
 package io.github.intellijnews.logic;
 
+import lombok.Builder;
+import lombok.Getter;
+
+@Builder
+@Getter
 public class RSSImage {
-    private String title;
-    private String url;
-    private String link;
-    private long width;
-    private long height;
-    private String description;
+    private final String title;
+    private final String url;
+    private final String link;
+    private final long width;
+    private final long height;
+    private final String description;
 }
