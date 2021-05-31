@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.github.mikhirurg.intellijnews</id>
+    <id>io.github.intellijnews</id>
     <name>IntelliJNews</name>
     <vendor>mikhirurg</vendor>
 
