@@ -1,8 +1,11 @@
-package io.github.intellijnews.plugin.ui;
+package io.github.intellijnews.plugin.ui.feed;
 
 import com.intellij.ui.components.JBScrollPane;
-import com.intellij.ui.table.JBTable;
 import io.github.intellijnews.logic.RSSItem;
+import io.github.intellijnews.plugin.ui.Application;
+import io.github.intellijnews.plugin.ui.feed.item.ItemPanel;
+import io.github.intellijnews.plugin.ui.feed.tab.ChannelTab;
+import io.github.intellijnews.plugin.ui.feed.tab.table_render.ChannelTabTableModel;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellEditor;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellRenderer;
 import io.github.intellijnews.plugin.ui.util.RSSItemsTableModel;
@@ -17,27 +20,47 @@ import java.util.stream.Collectors;
 public class AbstractFeed extends JPanel {
     private List<RSSItem> items;
     private RSSItemsTableModel model;
-    private List<Component> data;
-    private JTable content;
-    private Application application;
 
-
-    public AbstractFeed(Application application, List<RSSItem> items) {
+    public AbstractFeed(List<RSSItem> items) {
         this.items = items;
-        this.application = application;
         buildGui();
     }
 
     @SneakyThrows
     private void buildGui() {
         setLayout(new BorderLayout());
-        data = new LinkedList<>();
+        List<Component> data = new LinkedList<>();
         for (RSSItem feedItem : items) {
             data.add(new ItemPanel(feedItem));
         }
 
         model = new RSSItemsTableModel(data);
-        content = new JTable(model);
+        createContent();
+    }
+
+    public void setItems(List<RSSItem> items) {
+        this.items = items;
+        final RSSItemsTableModel[] newModel = new RSSItemsTableModel[1];
+        SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+            @Override
+            protected Boolean doInBackground() {
+                newModel[0] = new RSSItemsTableModel(items.stream().map(ItemPanel::new).collect(Collectors.toList()));
+                return true;
+            }
+
+            @Override
+            protected void done() {
+                removeAll();
+                model = newModel[0];
+                createContent();
+                validate();
+            }
+        };
+        worker.execute();
+    }
+
+    private void createContent() {
+        JTable content = new JTable(model);
         content.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         content.setDefaultRenderer(ItemPanel.class, new RSSItemsCellRenderer());
         content.setDefaultEditor(ItemPanel.class, new RSSItemsCellEditor());
@@ -46,24 +69,6 @@ public class AbstractFeed extends JPanel {
 
         JScrollPane scrollPane = new JBScrollPane(content);
         add(scrollPane, BorderLayout.CENTER);
-    }
-
-    public void setItems(List<RSSItem> items) {
-        this.items = items;
-        SwingWorker<Boolean, Void> swingWorker = new SwingWorker<Boolean, Void>() {
-            @Override
-            protected Boolean doInBackground() {
-                model.setItems(items.stream().map(ItemPanel::new).collect(Collectors.toList()));
-                return true;
-            }
-
-            @Override
-            protected void done() {
-                super.done();
-                model.fireTableDataChanged();
-            }
-        };
-        swingWorker.execute();
     }
 
 }
