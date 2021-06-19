@@ -1,7 +1,6 @@
 package io.github.intellijnews.plugin.ui.util;
 
 import io.github.intellijnews.plugin.ui.feed.item.ItemPanel;
-import io.github.intellijnews.plugin.ui.util.ComponentCellEditor;
 
 import javax.swing.*;
 import java.awt.*;

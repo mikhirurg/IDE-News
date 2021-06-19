@@ -1,5 +1,6 @@
 package io.github.intellijnews.parser;
 
+import com.github.sisyphsu.dateparser.DateParserUtils;
 import io.github.intellijnews.logic.RSSChannel;
 import io.github.intellijnews.logic.RSSImage;
 import io.github.intellijnews.logic.RSSItem;
@@ -14,8 +15,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,8 +73,8 @@ public class Parser {
                     String language = null;
                     String rating = null;
                     String copyright = null;
-                    LocalDateTime pubDate = null;
-                    LocalDateTime lastBuildDate = null;
+                    Date pubDate = null;
+                    Date lastBuildDate = null;
                     List<String> category = new LinkedList<>();
                     String docs = null;
                     long ttl = -1;
@@ -113,13 +113,11 @@ public class Parser {
                             }
                             break;
                             case PUB_DATE: {
-                                pubDate = LocalDateTime.parse(channelHeaders.item(j).getTextContent(),
-                                        DateTimeFormatter.RFC_1123_DATE_TIME);
+                                pubDate = DateParserUtils.parseDate(channelHeaders.item(j).getTextContent());
                             }
                             break;
                             case LAST_BUILD_DATE: {
-                                lastBuildDate = LocalDateTime.parse(channelHeaders.item(j).getTextContent(),
-                                        DateTimeFormatter.RFC_1123_DATE_TIME);
+                                lastBuildDate = DateParserUtils.parseDate(channelHeaders.item(j).getTextContent());
                             }
                             break;
                             case CATEGORY: {
@@ -245,7 +243,7 @@ public class Parser {
         String author = null;
         List<String> itemCategory = new LinkedList<>();
         String comments = null;
-        LocalDateTime itemPubDate = null;
+        Date itemPubDate = null;
 
         for (int i = 0; i < itemHeaders.getLength(); i++) {
             RSSItemHeader itemHeader = RSSItemHeader.valueOfNodeName(itemHeaders.item(i)
@@ -276,8 +274,7 @@ public class Parser {
                 }
                 break;
                 case PUB_DATE: {
-                    itemPubDate = LocalDateTime.parse(itemHeaders.item(i).getTextContent(),
-                            DateTimeFormatter.RFC_1123_DATE_TIME);
+                    itemPubDate = DateParserUtils.parseDate(itemHeaders.item(i).getTextContent());
                 }
                 break;
                 case UNKNOWN: {

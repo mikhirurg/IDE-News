@@ -2,10 +2,7 @@ package io.github.intellijnews.plugin.ui.feed;
 
 import com.intellij.ui.components.JBScrollPane;
 import io.github.intellijnews.logic.RSSItem;
-import io.github.intellijnews.plugin.ui.Application;
 import io.github.intellijnews.plugin.ui.feed.item.ItemPanel;
-import io.github.intellijnews.plugin.ui.feed.tab.ChannelTab;
-import io.github.intellijnews.plugin.ui.feed.tab.table_render.ChannelTabTableModel;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellEditor;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellRenderer;
 import io.github.intellijnews.plugin.ui.util.RSSItemsTableModel;

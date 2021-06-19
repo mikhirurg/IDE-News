@@ -1,12 +1,10 @@
 package io.github.intellijnews.logic;
 
-import io.github.intellijnews.logic.RSSImage;
-import io.github.intellijnews.logic.RSSItem;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Builder
@@ -20,8 +18,8 @@ public class RSSChannel {
     private final String language;
     private final String rating;
     private final String copyright;
-    private final LocalDateTime pubDate;
-    private final LocalDateTime lastBuildDate;
+    private final Date pubDate;
+    private final Date lastBuildDate;
     private final List<String> category;
     private final String docs;
     private final long ttl;

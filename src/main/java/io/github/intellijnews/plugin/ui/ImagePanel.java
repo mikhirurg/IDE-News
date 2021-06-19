@@ -1,7 +1,6 @@
 package io.github.intellijnews.plugin.ui;
 
 import io.github.intellijnews.logic.RSSImage;
-import io.github.intellijnews.plugin.ui.Settings;
 import io.github.intellijnews.plugin.ui.feed.FeedPanel;
 import io.github.intellijnews.util.Pair;
 
@@ -37,19 +36,25 @@ public class ImagePanel extends JPanel {
 
     private final RSSImage image;
     private Image img;
-    private int startX, startY;
+    private final int startX;
+    private final int startY;
 
     public ImagePanel(RSSImage image) {
         this.image = image;
-        try {
-            BufferedImage bufferedImage = ImageIO.read(new URL(image.getUrl()));
-            Pair<Double, Double> bounds = getBounds(bufferedImage.getWidth(), bufferedImage.getHeight());
-            img = bufferedImage.getScaledInstance(
-                    (int) bounds.getFirst().doubleValue(),
-                    (int) bounds.getSecond().doubleValue(),
-                    Image.SCALE_SMOOTH
-            );
-        } catch (IOException | NullPointerException ignored) {
+
+        if (image != null) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(new URL(image.getUrl()));
+                Pair<Double, Double> bounds = getBounds(bufferedImage.getWidth(), bufferedImage.getHeight());
+                img = bufferedImage.getScaledInstance(
+                        (int) bounds.getFirst().doubleValue(),
+                        (int) bounds.getSecond().doubleValue(),
+                        Image.SCALE_SMOOTH
+                );
+            } catch (IOException | NullPointerException ignored) {
+                img = NO_IMAGE_ICON;
+            }
+        } else {
             img = NO_IMAGE_ICON;
         }
         startX = IMAGE_WIDTH / 2 - img.getWidth(null) / 2;
@@ -62,7 +67,9 @@ public class ImagePanel extends JPanel {
 
     private void buildGui() {
         setPreferredSize(new Dimension(IMAGE_WIDTH, IMAGE_HEIGHT));
-        setToolTipText(image.getDescription());
+        if (image != null) {
+            setToolTipText(image.getDescription());
+        }
     }
 
     private static Pair<Double, Double> getBounds(int imageWidth, int imageHeight) {

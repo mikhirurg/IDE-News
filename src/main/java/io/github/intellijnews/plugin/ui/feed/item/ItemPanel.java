@@ -31,9 +31,7 @@ public class ItemPanel extends JPanel {
 
         JPanel channelInfo = new JPanel();
         channelInfo.setLayout(new BorderLayout());
-        if (item.getChannel().getImage() != null) {
-            channelInfo.add(new ImagePanel(item.getChannel().getImage()), BorderLayout.WEST);
-        }
+        channelInfo.add(new ImagePanel(item.getChannel().getImage()), BorderLayout.WEST);
 
         RSSTextPane title = new RSSTextPane(Settings.CHANNEL_NAME, item.getChannel().getTitle(),
                 "normal", "bold");

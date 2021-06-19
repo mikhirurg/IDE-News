@@ -34,6 +34,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.20")
     testCompileOnly("org.projectlombok:lombok:1.18.20")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.20")
+    compile("com.github.sisyphsu:dateparser:1.0.7")
 }
 
 // Configure gradle-intellij-plugin plugin.

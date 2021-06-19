@@ -12,7 +12,6 @@ public class HashTags extends JPanel {
         for (String tag : tags) {
             JLabel label = new JLabel("#" + tag);
             label.setFont(Settings.TAG);
-            //label.setForeground(Color.white);
             add(label);
         }
         setBackground(Settings.ITEM_BACKGROUND);

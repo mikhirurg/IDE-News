@@ -1,12 +1,10 @@
 package io.github.intellijnews.plugin.ui.feed.tab;
 
 import io.github.intellijnews.logic.RSSChannel;
-import io.github.intellijnews.logic.RSSContainer;
 import io.github.intellijnews.plugin.ui.Application;
 import io.github.intellijnews.plugin.ui.ImagePanel;
 import io.github.intellijnews.plugin.ui.Settings;
 import io.github.intellijnews.plugin.ui.feed.channel_list.ChannelList;
-import io.github.intellijnews.plugin.ui.feed.item.util.ChannelInfo;
 import io.github.intellijnews.plugin.ui.feed.item.util.RSSTextPane;
 
 import javax.swing.*;
@@ -35,9 +33,7 @@ public class ChannelTab extends JPanel {
 
         JPanel channelInfo = new JPanel();
         channelInfo.setLayout(new BorderLayout());
-        if (channel.getImage() != null) {
-            channelInfo.add(new ImagePanel(channel.getImage()), BorderLayout.WEST);
-        }
+        channelInfo.add(new ImagePanel(channel.getImage()), BorderLayout.WEST);
 
         RSSTextPane title = new RSSTextPane(Settings.CHANNEL_NAME, channel.getTitle(),
                 "normal", "bold");

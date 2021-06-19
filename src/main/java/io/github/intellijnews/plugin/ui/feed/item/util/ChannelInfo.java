@@ -2,7 +2,6 @@ package io.github.intellijnews.plugin.ui.feed.item.util;
 
 import io.github.intellijnews.logic.RSSChannel;
 import io.github.intellijnews.plugin.ui.Settings;
-import io.github.intellijnews.plugin.ui.feed.item.util.RSSTextPane;
 import io.github.intellijnews.plugin.ui.feed.item.util.table_render.WordWrapCellEditor;
 import io.github.intellijnews.plugin.ui.feed.item.util.table_render.WordWrapCellRenderer;
 import io.github.intellijnews.plugin.ui.feed.item.util.table_render.WordWrapTableModel;

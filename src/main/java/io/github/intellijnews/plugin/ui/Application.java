@@ -1,5 +1,6 @@
 package io.github.intellijnews.plugin.ui;
 
+import io.github.intellijnews.logic.RSSChannel;
 import io.github.intellijnews.logic.RSSContainer;
 import io.github.intellijnews.parser.Parser;
 import io.github.intellijnews.plugin.ui.feed.FeedPanel;
@@ -29,7 +30,7 @@ public class Application extends JPanel {
 
         JTabbedPane pane = new JTabbedPane();
 
-        feed = new FeedPanel(this, container);
+        feed = new FeedPanel(container);
         channelList = new ChannelList(this, container);
 
         JPanel feedPanel = new JPanel();
@@ -61,7 +62,11 @@ public class Application extends JPanel {
                 .channels(Settings.STORED_DATA.channels.stream()
                         .map(channel -> {
                             try {
-                                return parser.parse(channel);
+                                RSSChannel rssChannel = parser.parse(channel);
+                                if (rssChannel.getItems().size() > 0) {
+                                    rssChannel.getItems().removeIf(item -> item.getPubDate() == null);
+                                }
+                                return rssChannel;
                             } catch (IOException | SAXException ignored) {
                                 // TODO: add logging
                             }
