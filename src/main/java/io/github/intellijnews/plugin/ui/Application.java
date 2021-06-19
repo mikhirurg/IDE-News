@@ -1,16 +1,20 @@
 package io.github.intellijnews.plugin.ui;
 
+import com.github.sisyphsu.dateparser.DateParserUtils;
+import com.intellij.openapi.project.Project;
 import io.github.intellijnews.logic.RSSChannel;
 import io.github.intellijnews.logic.RSSContainer;
 import io.github.intellijnews.parser.Parser;
 import io.github.intellijnews.plugin.ui.feed.FeedPanel;
 import io.github.intellijnews.plugin.ui.feed.channel_list.ChannelList;
+import org.jetbrains.annotations.NotNull;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -18,9 +22,11 @@ public class Application extends JPanel {
     private FeedPanel feed;
     private ChannelList channelList;
     private RSSContainer container;
+    private final Project project;
     private final Parser parser = new Parser();
 
-    public Application() throws ParserConfigurationException {
+    public Application(@NotNull Project project) throws ParserConfigurationException {
+        this.project = project;
         container = getContainer();
         buildGui();
     }
@@ -30,14 +36,14 @@ public class Application extends JPanel {
 
         JTabbedPane pane = new JTabbedPane();
 
-        feed = new FeedPanel(container);
+        feed = new FeedPanel(this, container);
         channelList = new ChannelList(this, container);
 
         JPanel feedPanel = new JPanel();
         feedPanel.setLayout(new BorderLayout());
         feedPanel.add(feed, BorderLayout.CENTER);
         JButton refresh = new JButton("Refresh");
-        refresh.addActionListener(e -> updateData());
+        refresh.addActionListener(e -> updateData("Updating data"));
         feedPanel.add(refresh, BorderLayout.NORTH);
 
         JPanel listPanel = new JPanel();
@@ -46,9 +52,11 @@ public class Application extends JPanel {
         JButton add = new JButton("+");
         add.addActionListener(e -> {
             String url = JOptionPane.showInputDialog("Enter RSS Channel URL: ");
-            Settings.STORED_DATA.channels.add(url);
-            Settings.saveChannels();
-            updateData();
+            if (url != null) {
+                Settings.STORED_DATA.channels.add(url);
+                Settings.saveChannels();
+                updateData("Subscribing channel");
+            }
         });
         listPanel.add(add, BorderLayout.NORTH);
 
@@ -63,6 +71,9 @@ public class Application extends JPanel {
                         .map(channel -> {
                             try {
                                 RSSChannel rssChannel = parser.parse(channel);
+                                if (rssChannel == null) {
+                                    return null;
+                                }
                                 if (rssChannel.getItems().size() > 0) {
                                     rssChannel.getItems().removeIf(item -> item.getPubDate() == null);
                                 }
@@ -78,14 +89,17 @@ public class Application extends JPanel {
                 .build();
     }
 
-    public void updateData() {
+    public void updateData(String title) {
         container = getContainer();
         feed.setItems(FeedPanel.getFeedItems(container));
-        channelList.setItems(container);
+        channelList.setItems(title, container);
     }
 
     public static void main(String[] args) {
 
     }
 
+    public Project getProject() {
+        return project;
+    }
 }

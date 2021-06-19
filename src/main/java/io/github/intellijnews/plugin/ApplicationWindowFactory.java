@@ -15,7 +15,7 @@ public class ApplicationWindowFactory implements ToolWindowFactory {
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         ContentFactory factory = ContentFactory.SERVICE.getInstance();
-        Application application = new Application();
+        Application application = new Application(project);
         Content content = factory.createContent(application, "IntelliJNews", false);
         toolWindow.getContentManager().addContent(content);
     }

@@ -1,12 +1,16 @@
 package io.github.intellijnews.plugin.ui.feed;
 
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.Task;
 import com.intellij.ui.components.JBScrollPane;
 import io.github.intellijnews.logic.RSSItem;
+import io.github.intellijnews.plugin.ui.Application;
 import io.github.intellijnews.plugin.ui.feed.item.ItemPanel;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellEditor;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellRenderer;
 import io.github.intellijnews.plugin.ui.util.RSSItemsTableModel;
 import lombok.SneakyThrows;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +21,11 @@ import java.util.stream.Collectors;
 public class AbstractFeed extends JPanel {
     private List<RSSItem> items;
     private RSSItemsTableModel model;
+    private final Application application;
 
-    public AbstractFeed(List<RSSItem> items) {
+    public AbstractFeed(Application application, List<RSSItem> items) {
         this.items = items;
+        this.application = application;
         buildGui();
     }
 
@@ -38,7 +44,23 @@ public class AbstractFeed extends JPanel {
     public void setItems(List<RSSItem> items) {
         this.items = items;
         final RSSItemsTableModel[] newModel = new RSSItemsTableModel[1];
-        SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+
+        final Task.Backgroundable backgroundTask = new Task.Backgroundable(application.getProject(),
+                "Updating feed") {
+            @Override
+            public void run(@NotNull ProgressIndicator indicator) {
+                indicator.setText("Updating feed");
+                newModel[0] = new RSSItemsTableModel(items.stream().map(ItemPanel::new).collect(Collectors.toList()));
+                SwingUtilities.invokeLater(() -> {
+                    removeAll();
+                    model = newModel[0];
+                    createContent();
+                    validate();
+                });
+            }
+        };
+        backgroundTask.queue();
+        /*SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
             @Override
             protected Boolean doInBackground() {
                 newModel[0] = new RSSItemsTableModel(items.stream().map(ItemPanel::new).collect(Collectors.toList()));
@@ -53,7 +75,7 @@ public class AbstractFeed extends JPanel {
                 validate();
             }
         };
-        worker.execute();
+        worker.execute();*/
     }
 
     private void createContent() {

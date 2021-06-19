@@ -43,7 +43,10 @@ public class Parser {
         NodeList list = document.getElementsByTagName(RSSChannelHeader.CHANNEL.getNodeName());
 
         RSSChannel rssChannel = parseChannel(list);
-        rssChannel.setRssUrl(url);
+
+        if (rssChannel != null) {
+            rssChannel.setRssUrl(url);
+        }
 
         return rssChannel;
     }
@@ -113,11 +116,19 @@ public class Parser {
                             }
                             break;
                             case PUB_DATE: {
-                                pubDate = DateParserUtils.parseDate(channelHeaders.item(j).getTextContent());
+                                try {
+                                    pubDate = DateParserUtils.parseDate(channelHeaders.item(j).getTextContent());
+                                } catch (Exception e) {
+                                    pubDate = null;
+                                }
                             }
                             break;
                             case LAST_BUILD_DATE: {
-                                lastBuildDate = DateParserUtils.parseDate(channelHeaders.item(j).getTextContent());
+                                try {
+                                    lastBuildDate = DateParserUtils.parseDate(channelHeaders.item(j).getTextContent());
+                                } catch (Exception e) {
+                                    lastBuildDate = null;
+                                }
                             }
                             break;
                             case CATEGORY: {
@@ -274,7 +285,11 @@ public class Parser {
                 }
                 break;
                 case PUB_DATE: {
-                    itemPubDate = DateParserUtils.parseDate(itemHeaders.item(i).getTextContent());
+                    try {
+                        itemPubDate = DateParserUtils.parseDate(itemHeaders.item(i).getTextContent());
+                    } catch (Exception ignored) {
+                        itemPubDate = null;
+                    }
                 }
                 break;
                 case UNKNOWN: {
