@@ -1,5 +1,6 @@
 package io.github.intellijnews.plugin.ui;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
@@ -8,7 +9,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Settings {
-    public static Color ITEM_BACKGROUND = new Color(185, 207, 230);
+    public static Color ITEM_BACKGROUND;
+    public static Color FONT_COLOR;
     public static Font CHANNEL_NAME = new Font("Arial", Font.BOLD + Font.ITALIC, 15);
     public static Font TAG = new Font("Arial", Font.BOLD, 13);
     public static Font ARTICLE = new Font("Arial", Font.PLAIN, 12);
@@ -16,7 +18,40 @@ public class Settings {
 
     public static State STORED_DATA;
 
+    private enum LAF {
+        DARCULA,
+        INTELLIJ,
+        OTHER
+    }
+
+    private static LAF checkLaF() {
+        String laf = UIManager.getLookAndFeel().toString();
+
+        if (laf.contains("com.intellij.ide.ui.laf.IntelliJLaf")) {
+            return LAF.INTELLIJ;
+        } else if (laf.contains("com.intellij.ide.ui.laf.darcula.DarculaLaf")) {
+            return LAF.DARCULA;
+        }
+
+        return LAF.OTHER;
+    }
+
     static {
+
+        LAF laf = checkLaF();
+
+        switch (laf) {
+            case INTELLIJ:
+            case OTHER:
+                ITEM_BACKGROUND = new Color(185, 207, 230);
+                FONT_COLOR = Color.BLACK;
+                break;
+            case DARCULA:
+                ITEM_BACKGROUND = new Color(149, 149, 149);
+                FONT_COLOR = Color.WHITE;
+                break;
+        }
+
         STORED_DATA = new State();
         String dir = System.getProperty("user.home");
         Path path = Path.of(dir).resolve("RSSReader/channels");
@@ -53,7 +88,6 @@ public class Settings {
             e.printStackTrace();
         }
     }
-
 
 
     public static class State {

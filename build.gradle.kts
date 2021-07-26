@@ -36,6 +36,10 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.20")
     compile("com.github.sisyphsu:dateparser:1.0.7")
 }
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin

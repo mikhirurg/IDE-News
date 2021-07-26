@@ -2,7 +2,7 @@ package io.github.intellijnews.plugin.ui.feed.tab;
 
 import io.github.intellijnews.logic.RSSChannel;
 import io.github.intellijnews.plugin.ui.Application;
-import io.github.intellijnews.plugin.ui.ImagePanel;
+import io.github.intellijnews.plugin.ui.util.ImagePanel;
 import io.github.intellijnews.plugin.ui.Settings;
 import io.github.intellijnews.plugin.ui.feed.channel_list.ChannelList;
 import io.github.intellijnews.plugin.ui.feed.item.util.RSSTextPane;
@@ -47,6 +47,7 @@ public class ChannelTab extends JPanel {
         button.setLayout(new BorderLayout());
         JLabel label = new JLabel("...", JLabel.CENTER);
         label.setFont(Settings.CHANNEL_NAME);
+        label.setForeground(Settings.FONT_COLOR);
         label.setPreferredSize(new Dimension(100, 100));
         button.add(label, BorderLayout.CENTER);
         button.setBackground(Settings.ITEM_BACKGROUND);

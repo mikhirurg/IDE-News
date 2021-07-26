@@ -14,7 +14,10 @@ public class RSSTextPane extends JEditorPane {
                 font.getFamily() + "; " +
                 "font-style: " + style + "; " +
                 "font-size: " + font.getSize() + "pt; " +
-                "font-weight: " + weight + "\">" +
+                "font-weight: " + weight + "; " +
+                "color: " + "rgb(" + Settings.FONT_COLOR.getRed() + ", " +
+                +Settings.FONT_COLOR.getGreen() + ", " +
+                +Settings.FONT_COLOR.getBlue() + ") \">" +
                 text +
                 "</body></html>");
         setEditable(false);

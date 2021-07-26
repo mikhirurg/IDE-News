@@ -9,11 +9,14 @@ import io.github.intellijnews.plugin.ui.Application;
 import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
+
 public class ApplicationWindowFactory implements ToolWindowFactory {
 
     @SneakyThrows
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+        System.out.println(UIManager.getLookAndFeel());
         ContentFactory factory = ContentFactory.SERVICE.getInstance();
         Application application = new Application(project);
         Content content = factory.createContent(application, "IntelliJNews", false);

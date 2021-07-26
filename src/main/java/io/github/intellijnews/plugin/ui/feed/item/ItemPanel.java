@@ -1,7 +1,7 @@
 package io.github.intellijnews.plugin.ui.feed.item;
 
 import io.github.intellijnews.logic.RSSItem;
-import io.github.intellijnews.plugin.ui.ImagePanel;
+import io.github.intellijnews.plugin.ui.util.ImagePanel;
 import io.github.intellijnews.plugin.ui.Settings;
 import io.github.intellijnews.plugin.ui.feed.item.util.ChannelInfo;
 import io.github.intellijnews.plugin.ui.feed.item.util.HashTags;

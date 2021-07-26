@@ -1,6 +1,7 @@
-package io.github.intellijnews.plugin.ui;
+package io.github.intellijnews.plugin.ui.util;
 
 import io.github.intellijnews.logic.RSSImage;
+import io.github.intellijnews.plugin.ui.Settings;
 import io.github.intellijnews.plugin.ui.feed.FeedPanel;
 import io.github.intellijnews.util.Pair;
 
