@@ -28,8 +28,8 @@ public class Parser {
     }
 
     /**
-     * @param url
-     * @return
+     * @param url - channel url
+     * @return New RSSChannel object
      */
     public RSSChannel parse(String url) throws IOException, SAXException {
 
