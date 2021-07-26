@@ -15,6 +15,9 @@ import java.awt.event.MouseEvent;
 public class ItemPanel extends JPanel {
     private final RSSItem item;
 
+    private final int LABEL_WIDTH = 100;
+    private final int LABEL_HEIGHT = 100;
+
     public ItemPanel(RSSItem item) {
         this.item = item;
         buildGui();
@@ -42,7 +45,7 @@ public class ItemPanel extends JPanel {
         button.setLayout(new BorderLayout());
         JLabel label = new JLabel("...", JLabel.CENTER);
         label.setFont(Settings.CHANNEL_NAME);
-        label.setPreferredSize(new Dimension(100, 100));
+        label.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
         button.add(label, BorderLayout.CENTER);
         button.setBackground(Settings.ITEM_BACKGROUND);
         channelInfo.add(button, BorderLayout.EAST);

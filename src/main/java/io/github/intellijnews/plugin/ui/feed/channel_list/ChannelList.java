@@ -62,23 +62,6 @@ public class ChannelList extends JPanel {
             }
         };
         backgroundTask.queue();
-        /*SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
-            @Override
-            protected Boolean doInBackground() {
-                newModel[0] = new ChannelTabTableModel(container.getChannels().stream()
-                        .map(e -> new ChannelTab(application, e)).collect(Collectors.toList()));
-                return true;
-            }
-
-            @Override
-            protected void done() {
-                removeAll();
-                model = newModel[0];
-                createContent();
-                validate();
-            }
-        };
-        worker.execute();*/
     }
 
     private void createContent() {
@@ -86,7 +69,7 @@ public class ChannelList extends JPanel {
         content.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         content.setDefaultRenderer(ChannelTab.class, new ChannelTabCellRenderer());
         content.setDefaultEditor(ChannelTab.class, new ChannelTabCellEditor());
-        content.setIntercellSpacing(new Dimension(20, 20));
+        content.setIntercellSpacing(Settings.CONTENT_INTERCELL_SPACING);
         content.setShowGrid(false);
         JScrollPane scrollPane = new JScrollPane(content);
         add(scrollPane, BorderLayout.CENTER);

@@ -15,6 +15,11 @@ public class Settings {
     public static Font TAG = new Font("Arial", Font.BOLD, 13);
     public static Font ARTICLE = new Font("Arial", Font.PLAIN, 12);
     public static Font INFO = new Font("Arial", Font.PLAIN, 13);
+    public static Dimension CONTENT_INTERCELL_SPACING = new Dimension(20, 20);
+    public static int TABLE_ROW_SPACING = 20;
+    public static int TABLE_ROW_MAX_HEIGHT = 20;
+    public static int CHANNEL_TAB_MAX_HEIGHT = 20;
+
 
     public static State STORED_DATA;
 

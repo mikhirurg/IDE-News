@@ -32,11 +32,6 @@ public class Parser {
      * @return
      */
     public RSSChannel parse(String url) throws IOException, SAXException {
-        //TODO: кидаем свои исключения
-        //TODO: Подключаемся к url по HttpURLConnection
-        //TODO: передаем в билдер InputStream
-        //TODO: Делаем документ
-        //TODO: Парсим все.
 
         Document document = builder.parse(url);
 
@@ -58,7 +53,6 @@ public class Parser {
     }
 
     private RSSChannel parseChannel(NodeList channelList) {
-        //TODO: парсим тег <channel>
 
         RSSChannel channel = null;
 
@@ -246,7 +240,6 @@ public class Parser {
     }
 
     private RSSItem parseItem(NodeList itemHeaders) {
-        //TODO: парсим тег <item>
 
         String itemTitle = null;
         String itemLink = null;

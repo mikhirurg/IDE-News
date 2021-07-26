@@ -5,6 +5,7 @@ import com.intellij.openapi.progress.Task;
 import com.intellij.ui.components.JBScrollPane;
 import io.github.intellijnews.logic.RSSItem;
 import io.github.intellijnews.plugin.ui.Application;
+import io.github.intellijnews.plugin.ui.Settings;
 import io.github.intellijnews.plugin.ui.feed.item.ItemPanel;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellEditor;
 import io.github.intellijnews.plugin.ui.util.RSSItemsCellRenderer;
@@ -60,22 +61,6 @@ public class AbstractFeed extends JPanel {
             }
         };
         backgroundTask.queue();
-        /*SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
-            @Override
-            protected Boolean doInBackground() {
-                newModel[0] = new RSSItemsTableModel(items.stream().map(ItemPanel::new).collect(Collectors.toList()));
-                return true;
-            }
-
-            @Override
-            protected void done() {
-                removeAll();
-                model = newModel[0];
-                createContent();
-                validate();
-            }
-        };
-        worker.execute();*/
     }
 
     private void createContent() {
@@ -83,7 +68,7 @@ public class AbstractFeed extends JPanel {
         content.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         content.setDefaultRenderer(ItemPanel.class, new RSSItemsCellRenderer());
         content.setDefaultEditor(ItemPanel.class, new RSSItemsCellEditor());
-        content.setIntercellSpacing(new Dimension(20, 20));
+        content.setIntercellSpacing(Settings.CONTENT_INTERCELL_SPACING);
         content.setShowGrid(false);
 
         JScrollPane scrollPane = new JBScrollPane(content);

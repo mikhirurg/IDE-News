@@ -48,7 +48,7 @@ public class ChannelTab extends JPanel {
         JLabel label = new JLabel("...", JLabel.CENTER);
         label.setFont(Settings.CHANNEL_NAME);
         label.setForeground(Settings.FONT_COLOR);
-        label.setPreferredSize(new Dimension(100, 100));
+        label.setPreferredSize(Settings.CONTENT_INTERCELL_SPACING);
         button.add(label, BorderLayout.CENTER);
         button.setBackground(Settings.ITEM_BACKGROUND);
         channelInfo.add(button, BorderLayout.EAST);
