@@ -1,8 +1,8 @@
 # IntelliJNews
 
 ![Build](https://github.com/mikh-rich-is-team/IntelliJNews/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
 
 ## Template ToDo list
 - [x] Create a new [IntelliJ Platform Plugin Template][template] project.
