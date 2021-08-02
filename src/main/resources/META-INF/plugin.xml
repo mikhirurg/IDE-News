@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>io.github.intellijnews</id>
-    <name>IntelliJNews</name>
+    <id>io.github.ijnews</id>
+    <name>IJ-News</name>
     <vendor>mikhirurg</vendor>
 
     <!-- Product and plugin compatibility requirements -->
@@ -9,10 +9,10 @@
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="IntelliJNews"
+        <toolWindow id="IJ-News"
                     anchor="right"
                     icon="AllIcons.Toolwindows.WebToolWindow"
-                    factoryClass="io.github.intellijnews.plugin.ApplicationWindowFactory"/>
+                    factoryClass="io.github.ijnews.plugin.ApplicationWindowFactory"/>
     </extensions>
 
 </idea-plugin>
