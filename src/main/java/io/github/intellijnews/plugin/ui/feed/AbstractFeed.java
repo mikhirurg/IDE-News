@@ -51,7 +51,8 @@ public class AbstractFeed extends JPanel {
             @Override
             public void run(@NotNull ProgressIndicator indicator) {
                 indicator.setText("Updating feed");
-                newModel[0] = new RSSItemsTableModel(items.stream().map(ItemPanel::new).collect(Collectors.toList()));
+                newModel[0] = new RSSItemsTableModel(items.stream().map(ItemPanel::new)
+                        .collect(Collectors.toList()));
                 SwingUtilities.invokeLater(() -> {
                     removeAll();
                     model = newModel[0];

@@ -37,33 +37,38 @@ public class ImagePanel extends JPanel {
 
     private final RSSImage image;
     private Image img;
-    private final int startX;
-    private final int startY;
+    private int startX;
+    private int startY;
 
     public ImagePanel(RSSImage image) {
         this.image = image;
 
-        if (image != null) {
-            try {
-                BufferedImage bufferedImage = ImageIO.read(new URL(image.getUrl()));
-                Pair<Double, Double> bounds = getBounds(bufferedImage.getWidth(), bufferedImage.getHeight());
-                img = bufferedImage.getScaledInstance(
-                        (int) bounds.getFirst().doubleValue(),
-                        (int) bounds.getSecond().doubleValue(),
-                        Image.SCALE_SMOOTH
-                );
-            } catch (IOException | NullPointerException ignored) {
+        Settings.workerService.submit(() -> {
+            if (image != null) {
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(new URL(image.getUrl()));
+                    Pair<Double, Double> bounds = getBounds(bufferedImage.getWidth(), bufferedImage.getHeight());
+                    img = bufferedImage.getScaledInstance(
+                            (int) bounds.getFirst().doubleValue(),
+                            (int) bounds.getSecond().doubleValue(),
+                            Image.SCALE_SMOOTH
+                    );
+                } catch (IOException | NullPointerException ignored) {
+                    img = NO_IMAGE_ICON;
+                }
+            } else {
                 img = NO_IMAGE_ICON;
             }
-        } else {
-            img = NO_IMAGE_ICON;
-        }
-        startX = IMAGE_WIDTH / 2 - img.getWidth(null) / 2;
-        startY = IMAGE_HEIGHT / 2 - img.getHeight(null) / 2;
+            startX = IMAGE_WIDTH / 2 - img.getWidth(null) / 2;
+            startY = IMAGE_HEIGHT / 2 - img.getHeight(null) / 2;
 
-        img = cutImage(img);
-
-        buildGui();
+            img = cutImage(img);
+            SwingUtilities.invokeLater(() -> {
+                removeAll();
+                buildGui();
+                validate();
+            });
+        });
     }
 
     private void buildGui() {

@@ -7,18 +7,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Settings {
     public static Color ITEM_BACKGROUND;
     public static Color FONT_COLOR;
+
     public static Font CHANNEL_NAME = new Font("Arial", Font.BOLD + Font.ITALIC, 15);
     public static Font TAG = new Font("Arial", Font.BOLD, 13);
     public static Font ARTICLE = new Font("Arial", Font.PLAIN, 12);
     public static Font INFO = new Font("Arial", Font.PLAIN, 13);
+
     public static Dimension CONTENT_INTERCELL_SPACING = new Dimension(20, 20);
+
     public static int TABLE_ROW_SPACING = 20;
     public static int TABLE_ROW_MAX_HEIGHT = 20;
     public static int CHANNEL_TAB_MAX_HEIGHT = 20;
+
+    public static int WORKER_THREADS_NUM = 20;
+    public static ExecutorService workerService = Executors.newFixedThreadPool(WORKER_THREADS_NUM);
 
 
     public static State STORED_DATA;
