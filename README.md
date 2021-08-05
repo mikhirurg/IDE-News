@@ -14,7 +14,7 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-IntelliJNews is a great plugin that allows you to subscribe to different RSS channels and read news not leaving the IDE.
+IDE-News is a great plugin that allows you to subscribe to different RSS channels and read news not leaving the IDE.
 <!-- Plugin description end -->
 
 ## Installation
