@@ -111,7 +111,7 @@ public class ImagePanel extends JPanel {
         g2d.drawImage(image, startX, startY, null);
 
         color = g2d.getColor();
-        g2d.setColor(Settings.ITEM_BACKGROUND);
+//        g2d.setColor(Settings.ITEM_BACKGROUND);
         g2d.fill(outer);
         g2d.setColor(color);
         return newImage;

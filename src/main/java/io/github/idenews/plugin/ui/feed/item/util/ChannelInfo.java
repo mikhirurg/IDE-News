@@ -83,7 +83,7 @@ public class ChannelInfo {
         content.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         content.setDefaultRenderer(RSSTextPane.class, new WordWrapCellRenderer());
         content.setDefaultEditor(JTextArea.class, new WordWrapCellEditor());
-        content.setBackground(Settings.ITEM_BACKGROUND);
+//        content.setBackground(Settings.ITEM_BACKGROUND);
         content.setShowGrid(false);
 
         panel.add(content, BorderLayout.CENTER);

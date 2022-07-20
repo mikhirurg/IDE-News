@@ -25,8 +25,7 @@ version = properties("pluginVersion")
 
 // Configure project's dependencies
 repositories {
-    mavenCentral()
-    jcenter()
+    maven("https://maven.aliyun.com/repository/public")
 }
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
@@ -36,6 +35,7 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.20")
     compile("com.github.sisyphsu:dateparser:1.0.7")
 }
+
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -51,7 +51,7 @@ intellij {
     version = properties("platformVersion")
     type = properties("platformType")
     downloadSources = properties("platformDownloadSources").toBoolean()
-    updateSinceUntilBuild = true
+    updateSinceUntilBuild = false
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     setPlugins(*properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty).toTypedArray())
@@ -132,3 +132,6 @@ tasks {
         channels(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first())
     }
 }
+
+
+

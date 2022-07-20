@@ -15,6 +15,6 @@ public class HashTags extends JPanel {
             label.setForeground(Settings.FONT_COLOR);
             add(label);
         }
-        setBackground(Settings.ITEM_BACKGROUND);
+//        setBackground(Settings.ITEM_BACKGROUND);
     }
 }

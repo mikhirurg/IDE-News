@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -26,13 +27,9 @@ public class FeedPanel extends AbstractFeed {
         Parser parser = new Parser();
         FeedPanel feedPanel = new FeedPanel(null,
                 RSSContainer.builder()
-                        .channels(List.of(
-                                parser.parse("https://rss.nytimes.com/services/xml/rss/nyt/US.xml"),
-                                parser.parse("https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml"),
-                                parser.parse("https://www.fontanka.ru/fontanka.rss"),
-                                parser.parse("https://meduza.io/rss2/all"),
-                                parser.parse("https://tvrain.ru/export/rss/all.xml"),
-                                parser.parse("http://feeds.bbci.co.uk/news/england/rss.xml")
+                        .channels(Arrays.asList(
+                                parser.parse("https://www.iamkb.cn/?feed=rss2")
+
                         ))
                         .build()
         );

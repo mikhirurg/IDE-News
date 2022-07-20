@@ -14,6 +14,8 @@ import org.xml.sax.SAXException;
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -25,6 +27,7 @@ public class Application extends JPanel {
     private final Project project;
     private final Parser parser = new Parser();
     private boolean isUpdating = false;
+    private boolean feedPanelVisible = true;
 
     public Application(@NotNull Project project) throws ParserConfigurationException {
         this.project = project;
@@ -53,7 +56,26 @@ public class Application extends JPanel {
 
         JPanel feedPanel = new JPanel();
         feedPanel.setLayout(new BorderLayout());
+        pane.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() ==  0){
+                    if (feedPanelVisible){
+                        feedPanel.remove(feed);
+                        feedPanelVisible=false;
+                        feedPanel.repaint();
+                        feedPanel.updateUI();
+                    }else {
+                        feedPanel.add(feed);
+                        feedPanelVisible=true;
+                        feedPanel.repaint();
+                        feedPanel.updateUI();
+                    }
+                }
+            }
+        });
         feedPanel.add(feed, BorderLayout.CENTER);
+
         JButton refresh = new JButton("Refresh");
         refresh.addActionListener(e -> {
             if (!isUpdating) {
@@ -95,6 +117,7 @@ public class Application extends JPanel {
                                 }
                                 return rssChannel;
                             } catch (IOException | SAXException ignored) {
+                                ignored.printStackTrace();
                                 // TODO: add logging
                             }
                             return null;
