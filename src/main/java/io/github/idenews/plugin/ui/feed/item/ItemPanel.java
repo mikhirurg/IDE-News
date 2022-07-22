@@ -34,22 +34,22 @@ public class ItemPanel extends JPanel {
 
         JPanel channelInfo = new JPanel();
         channelInfo.setLayout(new BorderLayout());
-        channelInfo.add(new ImagePanel(item.getChannel().getImage()), BorderLayout.WEST);
+//        channelInfo.add(new ImagePanel(item.getChannel().getImage()), BorderLayout.WEST);
 
         RSSTextPane title = new RSSTextPane(Settings.CHANNEL_NAME, item.getChannel().getTitle(),
                 "normal", "bold");
         title.setFont(Settings.CHANNEL_NAME);
         channelInfo.add(title, BorderLayout.CENTER);
 
-        JPanel button = new JPanel();
+    /*    JPanel button = new JPanel();
         button.setLayout(new BorderLayout());
         JLabel label = new JLabel("...", JLabel.CENTER);
         label.setFont(Settings.CHANNEL_NAME);
         label.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
         button.add(label, BorderLayout.CENTER);
-        button.setBackground(Settings.ITEM_BACKGROUND);
+//        button.setBackground(Settings.ITEM_BACKGROUND);
         channelInfo.add(button, BorderLayout.EAST);
-        channelInfo.setBackground(Settings.ITEM_BACKGROUND);
+//        channelInfo.setBackground(Settings.ITEM_BACKGROUND);
 
         button.addMouseListener(new MouseAdapter() {
             @Override
@@ -58,8 +58,8 @@ public class ItemPanel extends JPanel {
                 frame.setVisible(true);
             }
         });
-
-        JPanel articleInfo = new JPanel();
+*/
+       /* JPanel articleInfo = new JPanel();
         articleInfo.setLayout(new BoxLayout(articleInfo, BoxLayout.X_AXIS));
 
         boolean addArticle = false;
@@ -72,33 +72,33 @@ public class ItemPanel extends JPanel {
             articleInfo.add(new HashTags(item.getCategory()));
             addArticle = true;
         }
-
-        articleInfo.setBackground(Settings.ITEM_BACKGROUND);
+*/
+//        articleInfo.setBackground(Settings.ITEM_BACKGROUND);
 
         info.add(channelInfo);
 
-        if (addArticle) {
+      /*  if (addArticle) {
             info.add(articleInfo);
-        }
+        }*/
 
-        info.setBackground(Settings.ITEM_BACKGROUND);
+//        info.setBackground(Settings.ITEM_BACKGROUND);
         mainPanel.add(info, BorderLayout.NORTH);
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.add(new RSSTextPane(Settings.ARTICLE, item.getTitle(), "normal", "bold"));
         content.add(new RSSTextPane(Settings.ARTICLE, item.getDescription(), "italic", "normal"));
-        content.setBackground(Settings.ITEM_BACKGROUND);
+        content.setBackground(Color.getColor("#3c3f41"));
         mainPanel.add(content, BorderLayout.CENTER);
 
         JPanel bottom = new JPanel();
         bottom.setLayout(new BorderLayout());
         bottom.add(new RSSTextPane(Settings.ARTICLE, item.getPubDate().toString(), "normal", "light"),
                 BorderLayout.EAST);
-        bottom.setBackground(Settings.ITEM_BACKGROUND);
+        bottom.setBackground(Color.getColor("#3c3f41"));
 
         mainPanel.add(bottom, BorderLayout.SOUTH);
-        mainPanel.setBackground(Settings.ITEM_BACKGROUND);
+        mainPanel.setBackground(Color.getColor("#3c3f41"));
 
         add(mainPanel);
     }

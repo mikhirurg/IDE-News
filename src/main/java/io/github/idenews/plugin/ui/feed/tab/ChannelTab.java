@@ -50,7 +50,7 @@ public class ChannelTab extends JPanel {
         label.setForeground(Settings.FONT_COLOR);
         label.setPreferredSize(Settings.CONTENT_INTERCELL_SPACING);
         button.add(label, BorderLayout.CENTER);
-        button.setBackground(Settings.ITEM_BACKGROUND);
+//        button.setBackground(Settings.ITEM_BACKGROUND);
         channelInfo.add(button, BorderLayout.EAST);
 
         ChannelList.ChannelListMenu channelListMenu = new ChannelList.ChannelListMenu(application, channel);

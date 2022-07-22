@@ -17,11 +17,12 @@ public class RSSTextPane extends JEditorPane {
                 "font-weight: " + weight + "; " +
                 "color: " + "rgb(" + Settings.FONT_COLOR.getRed() + ", " +
                 Settings.FONT_COLOR.getGreen() + ", " +
-                Settings.FONT_COLOR.getBlue() + ") \">" +
+                Settings.FONT_COLOR.getBlue() + ");background:#3c3f41;background-color:transparent \">"+
+//                "\">"+
                 text +
                 "</body></html>");
         setEditable(false);
-        setBackground(Settings.ITEM_BACKGROUND);
+        setBackground(Color.getColor("#3c3f41"));
 
         addHyperlinkListener(e -> {
             if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {

@@ -37,7 +37,7 @@ public class AbstractFeed extends JPanel {
         for (RSSItem feedItem : items) {
             data.add(new ItemPanel(feedItem));
         }
-
+//        data.add(new ItemPanel(items.get(0)));
         model = new RSSItemsTableModel(data);
         createContent();
     }

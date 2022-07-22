@@ -1,15 +1,15 @@
 <idea-plugin>
-    <id>io.github.intellijnews</id>
-    <name>IDE-News</name>
-    <vendor>mikhirurg</vendor>
+    <id>cn.iamkb</id>
+    <name>idea-rss-reader</name>
+    <vendor>kb</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="IDE-News"
+        <toolWindow id="RSS"
                     anchor="right"
                     icon="AllIcons.Toolwindows.WebToolWindow"
                     factoryClass="io.github.idenews.plugin.ApplicationWindowFactory"/>
