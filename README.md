@@ -21,10 +21,12 @@ IDE-News is an IntelliJ platform plugin that allows you to subscribe to differen
 
 ## How to use the plugin
 After installing the plugin in you favourite IDE, the tab with the plugin name will appear on the right side.
-![Plugin tab](/img/readme/guide_1.png)
+
+<img src="/img/readme/guide_1.png" width=500>
 
 After clicking on the plugin tab the plugin panel will appear.
-![Plugin tab](/img/readme/guide_2.png)
+
+<img src="/img/readme/guide_2.png" width=500>
 
 On the plugin panel, there are located two tabs:
 - On the tab "Feed" user can browse news from the channels subscribed 
