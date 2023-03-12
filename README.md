@@ -5,7 +5,9 @@
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
 
 ## Plugin description
+<!-- Plugin description -->
 IDE-News is an IntelliJ platform plugin that allows you to subscribe to different RSS channels and read your favorite news not leaving the IDE. 
+<!-- Plugin description end -->
 
 ## Installation guide
 
@@ -33,9 +35,9 @@ On the plugin panel, there are located two tabs:
 
 - On the tab "Channels" the user can manage the RSS channels (subscribe to new channels/ unsubscribe)
 
-| Feed | Channels  |
-|----|----|
-|![](/img/readme/guide_3.png)|![](/img/readme/guide_4.png)|
+| Feed                         | Channels                     |
+|------------------------------|------------------------------|
+| ![](/img/readme/guide_3.png) | ![](/img/readme/guide_4.png) |
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
