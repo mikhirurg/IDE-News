@@ -1,34 +1,39 @@
-# IntelliJNews
+# IDE-News
 
 ![Build](https://github.com/mikh-rich-is-team/IntelliJNews/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Verify the [pluginGroup](/gradle.properties), [plugin ID](/src/main/resources/META-INF/plugin.xml) and [sources package](/src/main/kotlin).
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the Plugin ID in the above README badges.
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
+## Plugin description
+IDE-News is an IntelliJ platform plugin that allows you to subscribe to different RSS channels and read your favorite news not leaving the IDE. 
 
-<!-- Plugin description -->
-IDE-News is a great plugin that allows you to subscribe to different RSS channels and read news not leaving the IDE.
-<!-- Plugin description end -->
-
-## Installation
+## Installation guide
 
 - Using IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "IntelliJNews"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "IDE-News"</kbd> >
   <kbd>Install Plugin</kbd>
   
 - Manually:
 
-  Download the [latest release](https://github.com/mikh-rich-is-team/IntelliJNews/releases/latest) and install it manually using
+  Download the [latest release](https://github.com/mikhirurg/IDE-News/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
+## How to use the plugin
+After installing the plugin in you favourite IDE, the tab with the plugin name will appear on the right side.
+![Plugin tab](/img/readme/guide_1.png)
+
+After clicking on the plugin tab the plugin panel will appear.
+![Plugin tab](/img/readme/guide_2.png)
+
+On the plugin panel, there are located two tabs:
+- On the tab "Feed" user can browse news from the channels subscribed 
+
+- On the tab "Channels" the user can manage the RSS channels (subscribe to new channels/ unsubscribe)
+
+| Feed | Channels  |
+|----|----|
+|![](/img/readme/guide_3.png)|![](/img/readme/guide_4.png)|
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
