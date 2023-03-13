@@ -1,6 +1,6 @@
 # IDE-News
 
-![Build](https://github.com/mikh-rich-is-team/IntelliJNews/workflows/Build/badge.svg)
+![Build](https://github.com/mikhirurg/IDE-News/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17293-intellijnews.svg)](https://plugins.jetbrains.com/plugin/17293-intellijnews)
 
