@@ -1,5 +1,8 @@
 package io.github.idenews.parser.headers;
 
+import lombok.Getter;
+
+@Getter
 public enum RSSChannelHeader {
     CHANNEL("channel"),
     TITLE("title"),
@@ -32,10 +35,6 @@ public enum RSSChannelHeader {
             }
         }
         return UNKNOWN;
-    }
-
-    public String getNodeName() {
-        return nodeName;
     }
 
 }

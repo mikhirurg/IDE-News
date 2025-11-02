@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ChannelInfo {
-    private static Map<RSSChannel, JFrame> FRAMES = new HashMap<>();
+    private static final Map<RSSChannel, JFrame> FRAMES = new HashMap<>();
 
     private static final int FRAME_WIDTH = 400;
     private static final int FRAME_HEIGHT = 300;
@@ -95,9 +95,9 @@ public class ChannelInfo {
     }
 
     private static RSSTextPane[][] convertToWrapAreas(List<String[]> data) {
-        RSSTextPane[][] areas = new RSSTextPane[data.size()][data.get(0).length];
+        RSSTextPane[][] areas = new RSSTextPane[data.size()][data.getFirst().length];
         for (int i = 0; i < data.size(); i++) {
-            for (int j = 0; j < data.get(0).length; j++) {
+            for (int j = 0; j < data.getFirst().length; j++) {
                 areas[i][j] = new RSSTextPane(Settings.ARTICLE, data.get(i)[j], "normal", "normal");
             }
         }

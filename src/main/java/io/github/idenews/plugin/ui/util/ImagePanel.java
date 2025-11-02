@@ -1,5 +1,6 @@
 package io.github.idenews.plugin.ui.util;
 
+import com.intellij.ui.JBColor;
 import io.github.idenews.logic.RSSImage;
 import io.github.idenews.plugin.ui.Settings;
 import io.github.idenews.plugin.ui.feed.FeedPanel;
@@ -12,7 +13,8 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
+import java.net.URI;
+import java.util.Objects;
 
 public class ImagePanel extends JPanel {
 
@@ -23,7 +25,7 @@ public class ImagePanel extends JPanel {
 
     static {
         try {
-            BufferedImage image = ImageIO.read(FeedPanel.class.getResourceAsStream("/img/NO_IMAGE.jpg"));
+            BufferedImage image = ImageIO.read(Objects.requireNonNull(FeedPanel.class.getResourceAsStream("/img/NO_IMAGE.jpg")));
             Pair<Double, Double> bounds = getBounds(image.getWidth(), image.getHeight());
             NO_IMAGE_ICON = image.getScaledInstance(
                     (int) bounds.getFirst().doubleValue(),
@@ -46,7 +48,7 @@ public class ImagePanel extends JPanel {
         Settings.workerService.submit(() -> {
             if (image != null) {
                 try {
-                    BufferedImage bufferedImage = ImageIO.read(new URL(image.getUrl()));
+                    BufferedImage bufferedImage = ImageIO.read(URI.create(image.getUrl()).toURL());
                     Pair<Double, Double> bounds = getBounds(bufferedImage.getWidth(), bufferedImage.getHeight());
                     img = bufferedImage.getScaledInstance(
                             (int) bounds.getFirst().doubleValue(),

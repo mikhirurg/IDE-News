@@ -8,6 +8,7 @@ import io.github.idenews.logic.RSSContainer;
 import io.github.idenews.parser.Parser;
 import io.github.idenews.plugin.ui.feed.FeedPanel;
 import io.github.idenews.plugin.ui.feed.channel_list.ChannelList;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.xml.sax.SAXException;
 
@@ -22,6 +23,7 @@ public class Application extends JPanel {
     private FeedPanel feed;
     private ChannelList channelList;
     private RSSContainer container;
+    @Getter
     private final Project project;
     private final Parser parser = new Parser();
     private boolean isUpdating = false;
@@ -90,7 +92,7 @@ public class Application extends JPanel {
                                 if (rssChannel == null) {
                                     return null;
                                 }
-                                if (rssChannel.getItems().size() > 0) {
+                                if (!rssChannel.getItems().isEmpty()) {
                                     rssChannel.getItems().removeIf(item -> item.getPubDate() == null);
                                 }
                                 return rssChannel;
@@ -117,7 +119,4 @@ public class Application extends JPanel {
 
     }
 
-    public Project getProject() {
-        return project;
-    }
 }

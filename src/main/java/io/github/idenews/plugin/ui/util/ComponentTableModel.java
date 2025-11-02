@@ -1,10 +1,13 @@
 package io.github.idenews.plugin.ui.util;
 
+import lombok.Setter;
+
 import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.util.List;
 
 public class ComponentTableModel extends AbstractTableModel {
+    @Setter
     private List<Component> items;
 
     private final Class columnClass;
@@ -44,7 +47,4 @@ public class ComponentTableModel extends AbstractTableModel {
         return true;
     }
 
-    public void setItems(List<Component> items) {
-        this.items = items;
-    }
 }

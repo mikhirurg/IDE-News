@@ -1,5 +1,8 @@
 package io.github.idenews.parser.headers;
 
+import lombok.Getter;
+
+@Getter
 public enum RSSImageHeader {
     TITLE("title"),
     URL("url"),
@@ -24,7 +27,4 @@ public enum RSSImageHeader {
         return UNKNOWN;
     }
 
-    public String getNodeName() {
-        return nodeName;
-    }
 }

@@ -67,7 +67,8 @@ public class Settings {
 
         STORED_DATA = new State();
         String dir = System.getProperty("user.home");
-        Path path = Path.of(dir).resolve("RSSReader/channels");
+        Path dirPath = Path.of(dir);
+        Path path = dirPath.resolve("RSSReader/channels");
         if (Files.exists(path)) {
             try {
                 STORED_DATA.load(new FileInputStream(path.toFile()));
@@ -76,7 +77,7 @@ public class Settings {
             }
         } else {
             try {
-                Files.createDirectory(Path.of(dir).resolve("RSSReader"));
+                Files.createDirectory(dirPath.resolve("RSSReader"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -85,11 +86,12 @@ public class Settings {
 
     public static void saveChannels() {
         String dir = System.getProperty("user.home");
-        Path path = Path.of(dir).resolve("RSSReader/channels");
+        Path dirPath = Path.of(dir);
+        Path path = dirPath.resolve("RSSReader/channels");
 
         if (!Files.exists(path)) {
             try {
-                Files.createDirectory(Path.of(dir).resolve("RSSReader"));
+                Files.createDirectory(dirPath.resolve("RSSReader"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

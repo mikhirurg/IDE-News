@@ -68,7 +68,7 @@ public class ItemPanel extends JPanel {
             addArticle = true;
         }
 
-        if (item.getCategory().size() > 0) {
+        if (!item.getCategory().isEmpty()) {
             articleInfo.add(new HashTags(item.getCategory()));
             addArticle = true;
         }

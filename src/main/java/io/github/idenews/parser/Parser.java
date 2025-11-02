@@ -46,12 +46,6 @@ public class Parser {
         return rssChannel;
     }
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        Parser parser = new Parser();
-        RSSChannel channel = parser.parse("https://rss.nytimes.com/services/xml/rss/nyt/World.xml");
-        channel.getItems();
-    }
-
     private RSSChannel parseChannel(NodeList channelList) {
 
         RSSChannel channel = null;
