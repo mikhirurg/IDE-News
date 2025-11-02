@@ -14,7 +14,7 @@ public class ApplicationWindowFactory implements ToolWindowFactory {
     @SneakyThrows
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-        ContentFactory factory = ContentFactory.SERVICE.getInstance();
+        ContentFactory factory = ContentFactory.getInstance();
         Application application = new Application(project);
         Content content = factory.createContent(application, "IDE-News", false);
         toolWindow.getContentManager().addContent(content);

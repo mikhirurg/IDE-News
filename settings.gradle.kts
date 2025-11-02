@@ -1,1 +1,1 @@
-rootProject.name = "IntelliJNews"
+rootProject.name = "IDE-News"
