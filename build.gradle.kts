@@ -44,8 +44,10 @@ intellijPlatform {
         """.trimIndent()
     }
 
-    pluginVerification.ides {
-        recommended()
+    pluginVerification {
+        ides {
+            recommended()
+        }
     }
 }
 
