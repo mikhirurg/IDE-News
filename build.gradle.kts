@@ -112,7 +112,7 @@ intellijPlatform {
 
     pluginVerification {
         ides {
-            recommended()
+            create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
         }
     }
 }
